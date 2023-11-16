@@ -32,5 +32,5 @@ services:
 # MONGODB yi local veya cloud farketmeksizin web üzerinden kontrol etmek için kullanılır
 
 # docker run -p 8081:8081 --rm -e ME_CONFIG_MONGODB_URL='mongodb://host.docker.internal:27017' mongo-express
-
+# http://admin:pass@127.0.0.1:8081 
 
