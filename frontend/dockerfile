@@ -1,0 +1,35 @@
+# FROM node
+FROM node:20.9.0-alpine3.18
+
+WORKDIR /frontend
+
+COPY . .
+
+# klasor yoksa oluştur varsa işlem yapma
+# klasör işlemlerinden sonra npm paketini indir
+RUN npm i -g pnpm
+RUN pnpm i
+
+
+CMD ["npm", "start"]
+
+EXPOSE 5173
+
+# RUN komutu image işlemi yaparken kullanılır
+# CMD komutu container dönüştürme işleminde kullanılır
+
+# $ cd /backend
+# docker build ./backend -t backend
+# $ docker build -t backend .
+# $ docker run -p 8000:8000 --name backend backend
+
+# Terminali Meşkul Etme Özelliğini Aktif Ederek RUN Yapar
+# $ docker run -d -p 8000:8000 --name backend backend
+
+# 80 nolu portan yayın yapmak için
+# docker run -d -p 80:5173 --name frontend2 rontend
+
+# tüm containerlerı durdurur
+# docker stop $(docker ps -a -q)
+
+# Browser: http://localhost:8000

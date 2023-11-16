@@ -1,0 +1,30 @@
+
+version: '3.9' # optional
+
+
+services:
+
+  frotend:
+
+    # container name ismi tanımlanmaz ise servis ismini kullanarak işlem yapıyor
+    container_name: frotend
+    image: "docker-compose-frontend"
+    build: ./frontend
+    ports:
+      -5173:5173
+      -3000:5173
+      -80:5173
+
+    restart: on-failure # hata durumunda restart yap
+
+    depends_on:
+      - backend
+
+
+  backend:
+    image: docker-compose-backend
+    build: ./backend
+    ports:
+      -8000:8000
+      
+    restart: on-failure # hata durumunda restart yap

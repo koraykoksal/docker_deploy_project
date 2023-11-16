@@ -1,0 +1,28 @@
+# FROM node
+FROM node:20.9.0-alpine3.18
+
+WORKDIR /backend
+
+COPY . .
+
+# klasor yoksa oluştur varsa işlem yapma
+# klasör işlemlerinden sonra npm paketini indir
+RUN mkdir -p logs
+RUN mkdir -p upload
+RUN npm install
+
+CMD node index.js
+
+# dışarıya hangi port ile çalışacağının bilgisini verir.
+# opsiyonel bir seçenektir
+EXPOSE 8000
+
+# RUN komutu image işlemi yaparken kullanılır
+# CMD komutu container dönüştürme işleminde kullanılır
+
+# $ cd /backend
+# docker build ./backend -t backend
+# $ docker build -t backend .
+# $ docker run -p 8000:8000 --name backend backend
+# $ docker run -d -p 8000:8000 --name backend backend
+# Browser: http://localhost:8000
